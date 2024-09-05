@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+// 常に監視状態 => 場所指定
 import SupabaseListener from './components/supabase-listener'
 
 const inter = Inter({ subsets: ["latin"] });
