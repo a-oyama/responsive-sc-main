@@ -13,7 +13,7 @@ import * as z from 'zod'
 import type { Database } from '../../../lib/database.types'
 type Schema = z.infer<typeof schema>
 
-// 入力データの検証ルールを定義
+// 入力データの検証ルールを定義，z= zod使用
 const schema = z.object({
   email: z.string().email({ message: 'メールアドレスの形式ではありません。' }),
   password: z.string().min(6, { message: '6文字以上入力する必要があります。' }),
@@ -32,7 +32,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    // 初期値
+    // 初期値,defaultValuesgaが空白
     defaultValues: { email: '', password: '' },
     // 入力値の検証
     resolver: zodResolver(schema),
@@ -80,7 +80,7 @@ const Login = () => {
             className="border rounded-md w-full py-2 px-3 focus:outline-none focus:border-sky-500"
             placeholder="メールアドレス"
             id="email"
-            {...register('email', { required: true })}
+            {...register('email', { required: true })} /* registerでバリデーション */
           />
           <div className="my-3 text-center text-sm text-red-500">{errors.email?.message}</div>
         </div>
