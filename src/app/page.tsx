@@ -1,9 +1,10 @@
+//　メインページ
+
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
 import type { Database } from "../../lib/database.types"
 
-// メインページ
 const Home = async () => {
    //クッキー使用しsupabaseクライアント作成
   const supabase = createServerComponentClient<Database>({
