@@ -50,7 +50,8 @@ const Signup = () => {
       const { error: errorSignup } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
-        /* 登録時にメールリダイレクト */
+        /* 登録時に指定のメールリダイレクト */
+        /* 本登録用URLをクリックすると指定URLへリダイレクト */
         options: {
           emailRedirectTo: `${location.origin}/auth/callback`,
         },
@@ -62,7 +63,7 @@ const Signup = () => {
         return
       }
 
-      // プロフィールの名前を更新
+      // プロフィールの名前を更新&id,emailはサインアップ時にテーブル作成
       const { error: updateError } = await supabase
         .from('profiles')
         .update({ name: data.name }) // 名前を更新
