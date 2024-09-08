@@ -12,9 +12,9 @@ type StateType = {
   }
 
   const useStore = create<StateType>((set) => ({
-    // 初期値
+    // 初期値にはユーザ使用し，
     user: { id: '', email: '', name: '', introduce: '', avatar_url: '' },
-    // アップデート
+    // 状態更新はsetuser使用
     setUser: (payload) => set({ user: payload }),
   }))
   
