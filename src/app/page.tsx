@@ -17,8 +17,18 @@ const Home = async () => {
   } = await supabase.auth.getSession()
 
   return (
-    <div className="text-center text-xl">
+
+    <div>
+          <div className="text-center text-xl">
+   {/* セッション取得している or ない */}
     {session ? <div>ログイン済</div> : <div>未ログイン</div>}
+  </div>
+      <div>テストページ</div>
+      <div>テストページ1</div>
+      <div>テストページ2</div>
+
+
+
   </div>
   )
 }

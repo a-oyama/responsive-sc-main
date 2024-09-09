@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 // レイアウト
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
+  
   return (
     <html>
       <body className={inter.className}>
