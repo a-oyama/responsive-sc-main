@@ -1,10 +1,13 @@
+//サインアップ画面の左ナビ設定
+
 'use client'
 
+// 画像インポート
 import {
     UserCircleIcon,
     EnvelopeIcon,
     KeyIcon,
-    ArrowLeftOnRectangleIcon
+    ArrowLeftOnRectangleIcon //アイコン群
   } from '@heroicons/react/24/outline'
   import { usePathname } from 'next/navigation'
   import Link from 'next/link'
