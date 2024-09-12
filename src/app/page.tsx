@@ -3,8 +3,7 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
-import FullCalendar from "@fullcalendar/react"
-//import dayGridPlagin 
+import Calendar from "./components/calendar"
 
 import type { Database } from "../../lib/database.types"
 
@@ -19,6 +18,11 @@ const Home = async () => {
     data: { session },
   } = await supabase.auth.getSession()
 
+
+
+
+
+
   return (
 
     <div>
@@ -28,8 +32,7 @@ const Home = async () => {
   </div>
 
 
-
-  <div className="text-center">テストページ1</div>
+  <div className="text-center"></div>
   <div className="text-center">テストページ2</div>
   <div className="text-center">テストページ3</div>
   <div className="text-center">テストページ4</div>
