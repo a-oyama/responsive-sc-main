@@ -3,6 +3,9 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
+import FullCalendar from "@fullcalendar/react"
+//import dayGridPlagin 
+
 import type { Database } from "../../lib/database.types"
 
 const Home = async () => {
@@ -23,8 +26,6 @@ const Home = async () => {
    {/* セッション取得している or ない */}
     {session ? <div>ログイン済</div> : <div>未ログイン</div>}
   </div>
-
-
 
 
 
