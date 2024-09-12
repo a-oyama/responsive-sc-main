@@ -13,6 +13,7 @@ import * as z from 'zod'
 import type { Database } from '../../../lib/database.types'
 type Schema = z.infer<typeof schema>
 
+
 // 入力データの検証ルールを定義，z= zod使用
 const schema = z.object({
   email: z.string().email({ message: 'メールアドレスの形式ではありません。' }),
@@ -67,6 +68,8 @@ const Login = () => {
       router.refresh()
     }
   }
+
+
 
   return (
     <div className="max-w-[400px] mx-auto">

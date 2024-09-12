@@ -4,6 +4,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Navigation from './navigation'
+//import ChatPage from './Chatpage'
 import type { Database } from '../../../lib/database.types'
 
 // 認証状態の監視,クライアント作成
@@ -42,7 +43,8 @@ const SupabaseListener = async () => {
       }
     }
 
-    // 取得したプロフをnavigationへ渡す
+    // 
+    // navigation.tsxへ移動 ＆ 取得したプロフを渡す
   return <Navigation session={session} profile={profile}/>
 }
 

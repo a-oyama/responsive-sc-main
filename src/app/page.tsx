@@ -6,6 +6,8 @@ import { cookies } from "next/headers"
 import type { Database } from "../../lib/database.types"
 import './App.css'
 
+import ChatPage from "./components/Chatpage"
+
 
 
 
@@ -21,8 +23,9 @@ const Home = async () => {
  } = await supabase.auth.getSession()
 
  return (
+
 <div>  
-<div className="text-center text-xl">
+<div className="text-right text-xl">
    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
 </div>
 
@@ -37,6 +40,7 @@ const Home = async () => {
   <br></br>
 <p>カレンダー部</p>
 
+<ChatPage />
 
 
 

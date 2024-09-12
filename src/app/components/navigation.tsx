@@ -54,9 +54,7 @@ const Navigation = ({
               <ul>
                 <li>
                     <Link href="/settings/profile">
-                    <li>
                       プロフィール編集
-                    </li>
                     <div className="relative w-10 h-10">
                     <Image
                         src={profile && profile.avatar_url ? profile.avatar_url : '/default.png'}
