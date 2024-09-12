@@ -23,19 +23,12 @@ const Home = async () => {
    {/* セッション取得している or ない */}
     {session ? <div>ログイン済</div> : <div>未ログイン</div>}
   </div>
+      <div>テストページ</div>
+      <div>テストページ1</div>
+      <div>テストページ2</div>
 
 
-
-  <div>< /calendar></div>
-
-  <div className="text-center">テストページ1</div>
-  <div className="text-center">テストページ2</div>
-  <div className="text-center">テストページ3</div>
-
-
-
-
-
+  
   </div>
   )
 }
