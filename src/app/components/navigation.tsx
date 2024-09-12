@@ -5,6 +5,7 @@ import type { Session } from '@supabase/auth-helpers-nextjs'
 import useStore from '../../../store'
 import Image from 'next/image'
 import { useEffect } from 'react'
+import React from 'react'
 import type { Database } from '../../../lib/database.types'
 type ProfileType = Database['public']['Tables']['profiles']['Row']
 
@@ -32,37 +33,56 @@ const Navigation = ({
   }, [session, setUser, profile])
 
 
+  // ヘッダー部
   return (
-    <header className="shadow-lg shadow-gray-100">
-      <div className="py-5 container max-w-screen-sm mx-auto flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl cursor-pointer">
-          らくらくスケジュール
-        </Link>
+    <header>
+      <nav>
+         <ul>
+           <li>
+              <div className="logo">
+              <Link href="/">
+                 <h3>らくらくスケジュール</h3>
+              </Link>
+              </div>
+           </li>
+         </ul>
+      </nav>
 
 {/* セッション存在する場合，プロフィールを表示 / ない場合はログイン・サインアップのみ */}
-        <div className="text-sm font-bold">
           {session ? (
-            <div className="flex items-center space-x-5">
-              {/* プロフィール画像を常に表示 */}
-              <Link href="/settings/profile">
-              <div className="relative w-10 h-10">
-                  <Image
-                    src={profile && profile.avatar_url ? profile.avatar_url : '/default.png'}
-                    className="rounded-full object-cover"
-                    alt="avatar"
-                    fill
-                  />
-                </div>
-              </Link>
-            </div>
+            <nav>
+              <ul>
+                <li>
+                    <Link href="/settings/profile">
+                    <li>
+                      プロフィール編集
+                    </li>
+                    <div className="relative w-10 h-10">
+                    <Image
+                        src={profile && profile.avatar_url ? profile.avatar_url : '/default.png'}
+                        className="rounded-full object-cover"
+                        alt="avatar"
+                        fill
+                     />
+                    </div>
+                    </Link>
+              </li>
+              {/* <li>プロフィール編集</li> */}
+            </ul>
+          </nav>
+          /* else => セッションが存在しない場合 */
           ) : (
-            <div className="flex items-center space-x-5">
-              <Link href="/auth/login">ログイン</Link>
-              <Link href="/auth/signup">サインアップ</Link>
-            </div>
+            <nav>
+              <ul>
+                <li>
+                   <Link href="/auth/login">ログイン</Link>
+                </li>
+                <li>
+                   <Link href="/auth/signup">サインアップ</Link>
+                </li>
+              </ul>
+            </nav>
           )}
-        </div>
-      </div>
     </header>
   )
 }

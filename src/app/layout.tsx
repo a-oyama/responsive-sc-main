@@ -20,6 +20,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={inter.className}>
         <div className="flex flex-col min-h-screen">
                     {/* @ts-expect-error next version of TS will fix this */}
+                    {/* リスナー呼び出し */}
                     <SupabaseListener />
 
 
@@ -30,6 +31,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               Copyright © All rights reserved | rakuraku-sc-system
             </div>
           </footer>
+          
         </div>
       </body>
     </html>

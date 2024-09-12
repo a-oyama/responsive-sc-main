@@ -12,6 +12,7 @@
     /* font-style: normal; */
   }
   
+/* ヘッダー部 */
   header {
     display: flex;
     justify-content: space-around;

@@ -4,10 +4,8 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Link } from 'react-router-dom';
 import { cookies } from "next/headers"
 import type { Database } from "../../lib/database.types"
-
 import './App.css'
 
-import ChatPage from "./components/chatpage"
 
 
 
