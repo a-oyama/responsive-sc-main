@@ -1,48 +1,62 @@
 //　メインページ
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { Link } from 'react-router-dom';
 import { cookies } from "next/headers"
-
-import Calendar from "./components/calendar"
-
 import type { Database } from "../../lib/database.types"
 
+import './App.css'
+
+import ChatPage from "./components/chatpage"
+
+
+
 const Home = async () => {
-   //クッキー使用しsupabaseクライアント作成
-  const supabase = createServerComponentClient<Database>({
-    cookies,
-  })
+  //クッキー使用しsupabaseクライアント作成
+ const supabase = createServerComponentClient<Database>({
+   cookies,
+ })
 
-  // セッション取得(ログイン済 : 未ログイン)
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
+ // セッション取得(ログイン済 : 未ログイン)
+ const {
+   data: { session },
+ } = await supabase.auth.getSession()
 
+ return (
+<div>  
+<div className="text-center text-xl">
+   {session ? <div>ログイン済</div> : <div>未ログイン</div>}
+</div>
 
-
-
-
-
-  return (
-
-    <div>
-  <div className="text-center text-xl">
-   {/* セッション取得している or ない */}
-    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
-  </div>
-
-
-  <div className="text-center"></div>
-  <div className="text-center">テストページ2</div>
-  <div className="text-center">テストページ3</div>
-  <div className="text-center">テストページ4</div>
+{/* Calendar */}
+<p>カレンダー部</p>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+<p>カレンダー部</p>
 
 
 
 
-  
-  </div>
-  )
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ )
 }
 
 export default Home
