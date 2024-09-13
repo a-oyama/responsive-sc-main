@@ -29,22 +29,11 @@ const Home = async () => {
 
 
  return (
-
+  
 <div>  
 <div className="text-right text-xl">
    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
 </div>
-
-{/* Calendar */}
-<p>カレンダー部</p>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-<p>カレンダー部</p>
 
 <div className="">
 <BlogNewButton />
@@ -54,8 +43,6 @@ const Home = async () => {
         {/* @ts-ignore*/}
         <BlogList />
       </Suspense>
-
-
 
 </div>
 
