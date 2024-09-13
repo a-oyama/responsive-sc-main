@@ -1,4 +1,5 @@
 //　メインページ
+import { Suspense } from 'react'
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
@@ -8,8 +9,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import type { Database } from "../../lib/database.types"
 import './App.css'
+import Loading from './loading'
 
 import BlogNewButton from "./components/blog/blog-new-button"
+import BlogList from './components/blog/blog-list'
 
 
 
@@ -43,7 +46,14 @@ const Home = async () => {
   <br></br>
 <p>カレンダー部</p>
 
+<div className="">
+<BlogNewButton />
+</div>
 
+<Suspense fallback={<Loading />}>
+        {/* @ts-ignore*/}
+        <BlogList />
+      </Suspense>
 
 
 
