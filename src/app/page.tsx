@@ -1,13 +1,15 @@
 //　メインページ
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
-import { Link } from 'react-router-dom';
 import { cookies } from "next/headers"
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+
 import type { Database } from "../../lib/database.types"
 import './App.css'
 
-import ChatPage from "./components/Chatpage"
-
+import BlogNewButton from "./components/blog/blog-new-button"
 
 
 
@@ -21,6 +23,7 @@ const Home = async () => {
  const {
    data: { session },
  } = await supabase.auth.getSession()
+
 
  return (
 
@@ -40,7 +43,6 @@ const Home = async () => {
   <br></br>
 <p>カレンダー部</p>
 
-<ChatPage />
 
 
 
