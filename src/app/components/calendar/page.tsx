@@ -25,6 +25,7 @@ import jaLocale from '@fullcalendar/core/locales/ja'
 import { useCallback } from "react"
 import interactionPlugin, 
 { DateClickArg } from "@fullcalendar/interaction"
+import '../../../app/App.css'
 
 
 // 当月を取得
