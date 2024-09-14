@@ -11,8 +11,8 @@ import type { Database } from "../../lib/database.types"
 import './App.css'
 import Loading from './loading'
 
-import BlogNewButton from "./components/blog/blog-new-button"
-import BlogList from './components/blog/blog-list'
+//import BlogNewButton from "./components/blog/blog-new-button"
+//import BlogList from './components/blog/blog-list'
 
 
 
@@ -35,14 +35,6 @@ const Home = async () => {
    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
 </div>
 
-<div className="">
-<BlogNewButton />
-</div>
-
-<Suspense fallback={<Loading />}>
-        {/* @ts-ignore*/}
-        <BlogList />
-      </Suspense>
 
 </div>
 
