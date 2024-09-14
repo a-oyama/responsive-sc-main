@@ -1,19 +1,11 @@
 //　メインページ
-import { Suspense } from 'react'
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-
 import type { Database } from "../../lib/database.types"
 import './App.css'
-import Loading from './loading'
 
-//import BlogNewButton from "./components/blog/blog-new-button"
-//import BlogList from './components/blog/blog-list'
-
+import Calendar from './components/calendar/page'
 
 
 const Home = async () => {
@@ -35,6 +27,13 @@ const Home = async () => {
    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
 </div>
 
+<div className=''>
+<Calendar />
+</div>
+
+{/* <div>
+      <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
+    </div> */}
 
 </div>
 
