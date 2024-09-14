@@ -31,22 +31,7 @@ const Home = async () => {
 <Calendar />
 </div>
 
-{/* <div>
-      <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
-    </div> */}
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
  )
 }
