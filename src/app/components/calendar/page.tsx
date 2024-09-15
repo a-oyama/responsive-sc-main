@@ -5,7 +5,7 @@ import FullCalendar, {
   DateSelectArg,
   EventApi,
   EventClickArg,
-  ventContentArg,
+  EventContentArg,
  } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"
 import allLocales from "@fullcalendar/core/locales-all";
@@ -13,9 +13,11 @@ import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 
+
 //イベントオブジェクト取得
 const Calendar = () => {
   const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
+  const [weekendsVisible, setWeekendsVisible] = useState(true);
   const handleEvents = useCallback((events: EventApi[]) => {
     console.log("events:", events);  // 確認用
     setCurrentEvents(events);
@@ -53,6 +55,8 @@ const renderEventContent = (eventContent: EventContentArg) => (
     <i>{eventContent.event.title}</i>
   </>
 );
+
+
 //画面
   return (
     <div className="demo-app">
@@ -79,6 +83,7 @@ const renderEventContent = (eventContent: EventContentArg) => (
           navLinks={true}
           businessHours={true}
           handleWindowResize={true}
+          weekends={weekendsVisible}
         />
       </div>
     </div>

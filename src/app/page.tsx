@@ -21,10 +21,11 @@ const Home = async () => {
 
 
  return (
-  
+ <div className="login"> 
 <div>  
 <div className="text-right text-xl">
    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
+</div>
 </div>
 
 <div className='cal'>
