@@ -27,7 +27,7 @@ const Home = async () => {
    {session ? <div>ログイン済</div> : <div>未ログイン</div>}
 </div>
 
-<div className=''>
+<div className='cal'>
 <Calendar />
 </div>
 

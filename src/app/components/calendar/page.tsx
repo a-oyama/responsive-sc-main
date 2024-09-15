@@ -5,10 +5,12 @@ import FullCalendar, {
   DateSelectArg,
   EventApi,
   EventClickArg,
+  ventContentArg,
  } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"
 import allLocales from "@fullcalendar/core/locales-all";
 import interactionPlugin from "@fullcalendar/interaction";
+import timeGridPlugin from "@fullcalendar/timegrid";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 
 //イベントオブジェクト取得
@@ -44,12 +46,24 @@ const handleEventClick = useCallback((clickInfo: EventClickArg) => {
     clickInfo.event.remove();
   }
 }, []);
+
+const renderEventContent = (eventContent: EventContentArg) => (
+  <>
+    <b>{eventContent.timeText}</b>
+    <i>{eventContent.event.title}</i>
+  </>
+);
 //画面
   return (
     <div className="demo-app">
       <div className="demo-app-main">
         <FullCalendar
-          plugins={[dayGridPlugin, interactionPlugin]}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          headerToolbar={{
+            start: "prev,next today",
+            center: "title",
+            end: "dayGridMonth,timeGridWeek,timeGridDay"
+          }}
           initialView="dayGridMonth"
           selectable={true}
           editable={true} //edit
@@ -59,6 +73,12 @@ const handleEventClick = useCallback((clickInfo: EventClickArg) => {
           eventsSet={handleEvents}
           select={handleDateSelect}
           eventClick={handleEventClick}
+          eventContent={renderEventContent}
+          selectMirror={true}
+          dayMaxEvents={true}
+          navLinks={true}
+          businessHours={true}
+          handleWindowResize={true}
         />
       </div>
     </div>

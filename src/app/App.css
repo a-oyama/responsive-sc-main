@@ -34,48 +34,47 @@
     color: white;
   }
   
-  nav ul {
+   nav ul {
     margin: 0;
     padding: 0;
   }
-  
-  nav ul li {
+   */
+/*    nav ul li {
     list-style: none; /* 白点消す */
-    display: inline-block; /* 横並び */
-    margin-right: 30px; /* 幅 */
-  }
+/*     display: inline-block; /* 横並び */ 
+/*     margin-right: 30px; 
+  } */
   
-  nav ul li {
+/*   nav ul li {
     font-size: 19px;
     text-decoration: none;
     color: var(--white-color);
     transition: all 0.3s; /* ホバー時間 */
-  }
+  /* } */
   
   /* カーソル当てた時のホバー */
-  nav ul li :hover {
+/*   nav ul li :hover {
     color: #48b4af;
-  }
+  } */
   
-  .container {
+/*   .container {
     height: 100vh;
     padding: 120px;
-  }
+  }  */
   
 /* ↓↓カレンダー部CSS（公式ドキュメントから */
 /* ↓↓カレンダー部CSS（公式ドキュメントから */
 /* ↓↓カレンダー部CSS（公式ドキュメントから */
 
-/* html,
-body,
-body > div { */
+ div { 
   /* the react root */
-/*    margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
   height: 100%;
+/*   width: 100px; */
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
-} */
+} 
 
 h2 {
   margin: 0;
