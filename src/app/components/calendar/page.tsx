@@ -1,72 +1,67 @@
 'use client'
 
-/* import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid"; // pluginは、あとから
-
-const Calendar = () => {
-  return (
-
-<div>
-<FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
-</div>
-
-  )
-}
-
-export default Calendar */
-
-/* ↑サンプル */
-
-import FullCalendar from "@fullcalendar/react"
+import { useCallback, useState } from "react";
+import FullCalendar, {
+  DateSelectArg,
+  EventApi,
+  EventClickArg,
+ } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"
-import timeGridPlugin from '@fullcalendar/timegrid'
-import listPlugin from '@fullcalendar/list'
-import jaLocale from '@fullcalendar/core/locales/ja'
-import { useCallback } from "react"
-import interactionPlugin, 
-{ DateClickArg } from "@fullcalendar/interaction"
-import '../../../app/App.css'
+import allLocales from "@fullcalendar/core/locales-all";
+import interactionPlugin from "@fullcalendar/interaction";
+import { INITIAL_EVENTS, createEventId } from "./event-utils";
 
-
-
-
-// 当月を取得
-const thisMonth = () => {
-  const today = new Date();
-  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
-    2,
-    "0"
-  )}`;
-};
-
+//イベントオブジェクト取得
 const Calendar = () => {
-
-  const handleDateClick = useCallback((arg: DateClickArg) => {
-    alert(arg.dateStr);
+  const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
+  const handleEvents = useCallback((events: EventApi[]) => {
+    console.log("events:", events);  // 確認用
+    setCurrentEvents(events);
   }, []);
 
+// 予定の入力
+  const handleDateSelect = useCallback((selectInfo: DateSelectArg) => {
+    let title = prompt("イベントのタイトルを入力してください")?.trim();
+    let calendarApi = selectInfo.view.calendar;
+    //unselect=スペースのみの場合などは何もしない
+    calendarApi.unselect();
+    if (title) {
+      calendarApi.addEvent({
+        id: createEventId(),
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        allDay: selectInfo.allDay,
+      });
+    }
+  }, []);
+
+//予定の削除
+const handleEventClick = useCallback((clickInfo: EventClickArg) => {
+  if (
+    window.confirm(`このイベント「${clickInfo.event.title}」を削除しますか`)
+  ) {
+    clickInfo.event.remove();
+  }
+}, []);
+//画面
   return (
-
-<div>
-<FullCalendar 
-plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-initialView="dayGridMonth"
-locales={[jaLocale]}
-locale='ja'
-headerToolbar={{
-  left: 'prev,next today',
-  center: 'title',
-  right: 'dayGridMonth,timeGridWeek listWeek',
-}}
-/* 代入検討 */
-events={[
-  {title:'event', date: `${thisMonth()}-15`},
-]}
-/* 代入検討 */
-dateClick={handleDateClick}
-/>
-</div>
-
+    <div className="demo-app">
+      <div className="demo-app-main">
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          selectable={true}
+          editable={true} //edit
+          initialEvents={INITIAL_EVENTS}
+          locales={allLocales}
+          locale="ja"
+          eventsSet={handleEvents}
+          select={handleDateSelect}
+          eventClick={handleEventClick}
+        />
+      </div>
+    </div>
   )
 }
 
